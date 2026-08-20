@@ -1,0 +1,473 @@
+body {
+    background-color: #ffffff;
+}
+
+.modebar { display: none !important; }
+/* ──────────────────────────────────────────────────────────────────
+   Poppins @font-face declarations
+   ────────────────────────────────────────────────────────────────── */
+   @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 100;
+    src: url("/assets/fonts/Poppins-Thin.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 100;
+    src: url("/assets/fonts/Poppins-ThinItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 200;
+    src: url("/assets/fonts/Poppins-ExtraLight.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 200;
+    src: url("/assets/fonts/Poppins-ExtraLightItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/assets/fonts/Poppins-Light.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 300;
+    src: url("/assets/fonts/Poppins-LightItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 400;
+    src: url("/assets/fonts/Poppins-Italic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/assets/fonts/Poppins-Medium.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 500;
+    src: url("/assets/fonts/Poppins-MediumItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 600;
+    src: url("/assets/fonts/Poppins-SemiBoldItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/assets/fonts/Poppins-Bold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 700;
+    src: url("/assets/fonts/Poppins-BoldItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 800;
+    src: url("/assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 800;
+    src: url("/assets/fonts/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 900;
+    src: url("/assets/fonts/Poppins-Black.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: italic;
+    font-weight: 900;
+    src: url("/assets/fonts/Poppins-BlackItalic.ttf") format("truetype");
+  }
+  
+  /* Now use Poppins everywhere */
+  body, h1, h2, h3, p, button, .Select-control, .js-plotly-plot {
+    font-family: "Poppins", sans-serif;
+  }
+
+/* make the page itself never scroll */
+html, body {
+    height: auto;
+    overflow: auto;
+}
+
+/* ------------------------------------------------------------
+   YOUR DASHBOARD FLEX CONTAINER
+   ------------------------------------------------------------ */
+#dashboard-container {
+    height: auto;      /* instead of 100vh */
+    overflow: visible;
+}
+
+/* ------------------------------------------------------------
+   SIDEBAR (left panel)
+   ------------------------------------------------------------ */
+.dashboard-sidebar {
+    flex: 0 0 330px;            /* fixed 340px width */
+    height: auto;
+    overflow-y: visible;         /* scroll if content is taller */
+    background-color: #f8f9f9;
+    padding: 1rem;
+    border-right: 2px solid #ccc;
+    box-sizing: border-box;     /* include padding in width */
+}
+
+/* ------------------------------------------------------------
+   MAIN AREA (right panel with the graph)
+   ------------------------------------------------------------ */
+.dashboard-main {
+    flex: 1 1 auto;             /* grow to fill remaining space */
+    position: relative;
+    height: 100%;
+    overflow: auto;             /* allow vertical scroll if needed */
+}
+
+/* ------------------------------------------------------------
+   OVERRIDE INLINE WIDTH/HEIGHT ON YOUR PLOTLY GRAPH
+   ------------------------------------------------------------ */
+/* Targets the immediate child <div> around dcc.Graph */
+.dashboard-main > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Targets the internal Plotly container */
+.js-plotly-plot,
+.dash-graph {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ------------------------------------------------------------
+   Your existing styles below…
+   ------------------------------------------------------------ */
+h1 {
+    font-family: "Poppins"; 
+    color: #000000; 
+    font-size: 28px;
+    margin: 15px;
+}
+
+h2 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-family: "Poppins";
+    font-size: 14px !important;
+    color: #000000;
+}
+
+p {
+    font-family: "Poppins";
+    color: #000000;
+    font-size: 16px;
+    margin: 15px;
+    text-align: left;
+}
+
+/* Radio-buttons */
+.radio-group .form-check {
+    padding-left: 0;
+  }
+  
+  .radio-group .btn-group > .form-check:not(:last-child) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .radio-group .btn-group > .form-check:not(:first-child) > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+  }
+
+.form-check {
+    width: 100%;
+    height: 38px;
+    margin: 1px;
+    padding-left: 0;
+}
+
+.btn.btn-outline-light,
+.btn.btn-light {
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    font-family: "Poppins";
+    border-radius: 3px;
+}
+
+.btn.btn-outline-light {
+    border: 1px solid transparent;
+}
+
+.btn.btn-outline-light:hover {
+    color: #010103;
+    background-color: color-mix(in srgb, var(--bs-light), #010103 7%);
+}
+
+/* Single button */
+
+.btn.btn-info {
+    width: 100%;
+    height: 38px;
+    margin: 1px;
+    padding: 6px;
+    font-family: "Poppins";
+    border-radius: 3px;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.btn.btn-info:active,
+.btn.btn-info:focus {
+    background-color: var(--bs-info);
+}
+
+.btn.btn-info:hover {
+    background-color: color-mix(in srgb, var(--bs-info), #010103 7%);
+}
+
+/* Dropdowns */
+
+/*.customDropdown {
+    font-size: 16px;
+    font-family: "Poppins";
+    padding-left: 1px;
+}
+
+.customDropdown .Select-control {
+    width: 100%;
+    height: 38px;
+    background-color: transparent;
+    border: 1px solid #676768;
+    border-radius: 4px;
+    color: var(--bs-info) !important;
+}
+
+.customDropdown .Select-value-label,
+.customDropdown .Select-placeholder {    
+    color: var(--bs-info) !important;
+}
+
+.customDropdown .Select-arrow {
+    border-color: #ffffff transparent transparent;
+}
+
+.customDropdown.is-open .Select-arrow {
+    border-color: transparent transparent #ade8f4;
+}
+
+.customDropdown .Select-clear {
+    color: var(--bs-info);
+    font-size: 22px;
+}
+
+.customDropdown.is-focused:not(.is-open) > .Select-control {
+    border: 2px solid color-mix(in srgb, var(--bs-info), #ade8f4 50%) !important;
+}
+
+.customDropdown.is-focused:not(.is-open) .Select-arrow {
+    border-color: var(--bs-info) transparent transparent;
+}
+
+.customDropdown .Select-menu-outer {
+    margin-top: 5px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: var(--bs-light);
+}
+
+.customDropdown .VirtualizedSelectFocusedOption {
+    background-color: color-mix(in srgb, var(--bs-light), #010103 7%);
+    border-radius: 3px;
+    color: #ffffff;
+} */
+
+.customDropdown {
+    font-size: 16px;
+    font-family: "Poppins";
+    width: 100%;
+    padding-left: 1px;
+}
+
+/* Main dropdown container */
+.customDropdown .Select-control {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding-right: 50px; /* Add room for arrow and clear icon */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    color: #212529;
+    box-shadow: none;
+    position: relative;
+}
+
+/* Highlight on focus */
+.customDropdown .is-focused .Select-control {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25);
+}
+
+/* Center text vertically */
+.customDropdown .Select-placeholder,
+.customDropdown .Select-value-label {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+
+/* Fix arrow alignment */
+.customDropdown .Select-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid #6c757d;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    z-index: 1;
+}
+
+/* Clear (X) button alignment */
+.customDropdown .Select-clear {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Dropdown menu styling */
+.customDropdown .Select-menu-outer {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    z-index: 1000;
+}
+
+/* Dropdown option styling */
+.customDropdown .VirtualizedSelectOption {
+    padding: 10px 14px;
+    color: #212529;
+}
+
+.customDropdown .VirtualizedSelectFocusedOption {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+
+
+/* Outputs */
+
+.Output {
+    width: 150px;
+    height: 38px;
+    background-color: rgba(204,204,204,0.1);
+    border: 1px solid rgba(204,204,204,0.1);
+    border-radius: 3px;
+}
+
+.Output:empty::before {
+  content:"";
+  display:inline-block;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 34px;
+    padding-left: 7px;
+    font-family: "Poppins";
+    color: var(--bs-info);
+}
+
+/* 1) Keep a 12px inset on the control itself */
+.customDropdown .Select-control {
+    padding: 0 12px !important;
+    box-sizing: border-box;
+  }
+  
+  /* 2) Remove every other left-padding from inner wrappers */
+  .customDropdown .Select-control > .Select-placeholder,
+  .customDropdown .Select-control > .Select-value,
+  .customDropdown .Select-control > .Select-input {
+    margin: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  /* 3) And clear it from the actual <input> you type into */
+  .customDropdown .Select-input > input {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  
+  /* 4) Icons back inside the 12px right padding */
+  .customDropdown .Select-arrow-zone,
+  .customDropdown .Select-clear-zone {
+    right: -25px !important;
+  }
+
+  /* force the real <input> in react-select to start at 0 */
+.customDropdown .Select-control .Select-input > input {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-indent: 0 !important;
+  }
